@@ -119,14 +119,33 @@
         "directAccessGrantsEnabled": false,
         "attributes": {
           "pkce.code.challenge.method": "S256"
-        }
+        },
+        "protocolMappers": [
+          {
+            "name": "reports-api-audience",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-audience-mapper",
+            "consentRequired": false,
+            "config": {
+              "included.client.audience": "reports-api",
+              "id.token.claim": "false",
+              "access.token.claim": "true"
+            }
+          }
+        ]
       },
       {
         "clientId": "reports-api",
         "enabled": true,
         "clientAuthenticatorType": "client-secret",
-        "secret": "oNwoLQdvJAvRcL89SydqCWCe5ry1jMgq", 
-        "bearerOnly": true
+        "secret": "oNwoLQdvJAvRcL89SydqCWCe5ry1jMgq",
+        "bearerOnly": true,
+        "authorizationServicesEnabled": true,
+        "attributes": {
+          "access.token.lifespan": "300",
+          "client.session.idle.timeout": "300",
+          "client.session.max.lifespan": "3600"
+        }
       }
     ]
   }
