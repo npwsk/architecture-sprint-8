@@ -30,7 +30,6 @@ const validateJwt = async (request, response, next) => {
         `http://localhost:8080/realms/${config.keycloak.realm}`,
         `http://keycloak:8080/realms/${config.keycloak.realm}`
       ],
-      audience: config.keycloak.clientId,
     });
 
     request.user = payload;
